@@ -27,7 +27,11 @@ Draw a C4 container diagram for an e-commerce system with:
 - External: Stripe payments, SendGrid email
 ```
 
-Claude will generate a `.drawio` file you can open and edit in [draw.io](https://app.diagrams.net/). See [`examples/ecommerce-example.drawio`](examples/ecommerce-example.drawio) for a working example.
+Claude generates a `.drawio` file you can open and edit in [draw.io](https://app.diagrams.net/):
+
+![AE Render Pipeline — C4 Container Diagram](examples/ae-pipeline-c4-en.png)
+
+*Real output: AWS Deadline Cloud render pipeline with 3 persons, 2 system boundaries, 14 containers, 4 external systems.*
 
 ## Installation
 
