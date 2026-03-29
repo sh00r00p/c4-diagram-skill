@@ -27,9 +27,7 @@ Draw a C4 container diagram for an e-commerce system with:
 - External: Stripe payments, SendGrid email
 ```
 
-Claude will generate a `.drawio` file you can open and edit:
-
-![Example C4 diagram](examples/ecommerce-example.png)
+Claude will generate a `.drawio` file you can open and edit in [draw.io](https://app.diagrams.net/). See [`examples/ecommerce-example.drawio`](examples/ecommerce-example.drawio) for a working example.
 
 ## Installation
 
