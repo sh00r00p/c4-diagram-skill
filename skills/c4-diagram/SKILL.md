@@ -44,7 +44,7 @@ Map every element to a C4 category:
 
 | Category | Color | Shape | Description |
 |----------|-------|-------|-------------|
-| Person | `#08427B` (dark blue) | Stickman | Users, actors, roles |
+| Person | `#08427B` (dark blue) | `shape=actor` + text label | Users, actors, roles |
 | Container | `#438DD5` (blue) | Rounded rectangle | Applications, services, APIs |
 | Database | `#438DD5` (blue) | Cylinder | Any data store (SQL, NoSQL, files) |
 | Queue/Broker | `#438DD5` (blue) | Rounded rectangle with label | Message queues, event buses |
@@ -77,6 +77,8 @@ Layer 3 (y ≈ 700+):    External Systems
 - Place elements that communicate frequently adjacent to each other
 - Route connections vertically when possible
 - Avoid diagonal lines crossing other elements
+- **No arrows through unrelated containers**: if A connects to C, the arrow must NOT pass through B. Fix by: (a) placing A and C adjacent, (b) using explicit exit/entry points, or (c) reorganizing the layout
+- **Arrow labels must not overlap container text**: use `labelBackgroundColor=#ffffff` on all edges, and use perpendicular offset (`y` in mxGeometry) to push labels away from containers
 
 ### Step 4: Define Connections
 
@@ -87,7 +89,8 @@ For each connection, specify:
 - Direction: always source → target (follow data flow)
 
 **Connection rules:**
-- Every arrow must have a label (no unlabeled connections)
+- Every arrow must have a label (no unlabeled connections) — if a label overlaps, fix the layout or offset, never remove the label
+- Always include `labelBackgroundColor=#ffffff` in connection styles
 - Use `[Protocol]` suffix: `[REST/JSON]`, `[gRPC]`, `[SQL]`, `[AMQP]`, `[WebSocket]`
 - Bidirectional flows: use two separate arrows with distinct labels
 - Self-referencing: avoid (restructure the diagram instead)
@@ -105,7 +108,7 @@ Build the XML following these rules:
 6. Add the legend in the bottom-right corner
 
 **Element sizing:**
-- Person: 200 × 180px
+- Person: 40 × 60px actor + 220 × 60px text label below
 - Container: 240 × 120px
 - Database (cylinder): 240 × 120px
 - External System: 240 × 120px
@@ -160,3 +163,7 @@ Follow Simon Brown's C4 model constraints:
 - **NO mixed C4 levels** — Container level only (no classes, no infrastructure)
 - **NO invisible text** — ensure font color contrasts with background
 - **NO hardcoded dimensions** — calculate system boundary size from children
+- **NO `mxgraph.c4.*` shapes** — they require the C4 shape library which is NOT loaded by default in draw.io. Use built-in shapes: `shape=actor` for persons, `shape=cylinder3` for databases
+- **NO arrows crossing unrelated containers** — rearrange layout so every arrow has a clear path between source and target
+- **NO labels without `labelBackgroundColor=#ffffff`** — naked labels become unreadable when crossing other elements
+- **NO stripping labels to fix overlap** — if a label overlaps a container, fix the layout or offset, never remove information

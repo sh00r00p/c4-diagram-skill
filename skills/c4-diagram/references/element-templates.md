@@ -2,21 +2,31 @@
 
 XML templates for each C4 element type. Copy and modify coordinates, IDs, and labels.
 
-## Person (Stickman)
+## Person (Actor + Label)
+
+**IMPORTANT:** Do NOT use `shape=mxgraph.c4.person2` — it requires the C4 shape library which is NOT loaded by default in draw.io desktop or web. Use the built-in `shape=actor` (stickman) with a separate text label below.
 
 ```xml
+<!-- Actor figure (built-in stickman, always renders without plugins) -->
 <mxCell id="person_1"
-  value="&lt;b&gt;User Name&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Person]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;A user of the system.&lt;/font&gt;"
-  style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;container=0;image;imageAspect=0;fillColor=#08427B;fontColor=#ffffff;fontSize=14;align=center;"
+  value=""
+  style="shape=actor;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=#052E56;"
   vertex="1" parent="1">
-  <mxGeometry x="360" y="20" width="200" height="180" as="geometry"/>
+  <mxGeometry x="380" y="20" width="40" height="60" as="geometry"/>
+</mxCell>
+<!-- Label below the actor -->
+<mxCell id="person_1_label"
+  value="&lt;b&gt;User Name&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:10px;color:#666666&quot;&gt;[Person]&lt;/font&gt;&lt;br/&gt;&lt;font style=&quot;font-size:10px;color:#666666&quot;&gt;A user of the system.&lt;/font&gt;"
+  style="text;html=1;fontSize=12;align=center;verticalAlign=top;"
+  vertex="1" parent="1">
+  <mxGeometry x="290" y="85" width="220" height="60" as="geometry"/>
 </mxCell>
 ```
 
 - **Fill color:** `#08427B` (dark blue, per C4 standard)
-- **Font color:** `#ffffff`
-- **Size:** 200 x 180px
-- **Shape:** `shape=mxgraph.c4.person2` (draw.io's built-in C4 person)
+- **Actor size:** 40 x 60px (compact stickman)
+- **Label:** separate text cell, centered below actor, 220px wide
+- **Shape:** `shape=actor` (built-in, always available)
 
 ## Container (Application / Service)
 
@@ -80,32 +90,40 @@ XML templates for each C4 element type. Copy and modify coordinates, IDs, and la
 
 ## Connection (Synchronous)
 
+**IMPORTANT:** Always include `labelBackgroundColor=#ffffff` so labels remain readable when crossing other elements. Use explicit `exitX/exitY` and `entryX/entryY` to control attachment points and prevent arrows from crossing unrelated containers. Use `y` offset in mxGeometry to push labels away from the arrow center (negative = above, positive = below for horizontal arrows).
+
 ```xml
 <mxCell id="conn_1"
   value="Makes API calls [REST/JSON]"
-  style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;"
+  style="endArrow=blockThin;endFill=1;fontSize=10;fontColor=#404040;strokeColor=#404040;labelBackgroundColor=#ffffff;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;"
   edge="1" source="person_1" target="container_1" parent="1">
-  <mxGeometry relative="1" as="geometry"/>
+  <mxGeometry y="-15" relative="1" as="geometry">
+    <mxPoint as="offset"/>
+  </mxGeometry>
 </mxCell>
 ```
 
 - **Line:** solid
 - **Arrow:** `endArrow=blockThin;endFill=1`
 - **Label format:** `Action [Protocol]`
+- **Label background:** `labelBackgroundColor=#ffffff` (mandatory)
+- **Offset:** `y="-15"` pushes label above the line; `y="15"` pushes below
 
 ## Connection (Asynchronous)
 
 ```xml
 <mxCell id="conn_2"
   value="Publishes events [AMQP]"
-  style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;dashed=1;dashPattern=5 5;elbow=vertical;"
+  style="endArrow=blockThin;endFill=1;fontSize=10;fontColor=#404040;strokeColor=#404040;dashed=1;dashPattern=5 5;labelBackgroundColor=#ffffff;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;"
   edge="1" source="container_1" target="container_2" parent="1">
-  <mxGeometry relative="1" as="geometry"/>
+  <mxGeometry y="15" relative="1" as="geometry">
+    <mxPoint as="offset"/>
+  </mxGeometry>
 </mxCell>
 ```
 
 - **Line:** dashed (`dashed=1;dashPattern=5 5`)
-- Everything else same as synchronous
+- Everything else same as synchronous (including `labelBackgroundColor`)
 
 ## Label Format
 
