@@ -1,0 +1,149 @@
+<mxfile host="app.diagrams.net" agent="C4 Diagram Skill" version="24.0.0" type="device">
+  <diagram id="c4-container" name="C4 Container Diagram">
+    <mxGraphModel dx="1422" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- LAYER 1: Persons -->
+        <mxCell id="person_1" value="&lt;b&gt;Customer&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Person]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Places orders and tracks deliveries.&lt;/font&gt;" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;container=0;image;imageAspect=0;fillColor=#08427B;fontColor=#ffffff;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="20" width="200" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="person_2" value="&lt;b&gt;Admin&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Person]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Manages products and orders.&lt;/font&gt;" style="shape=mxgraph.c4.person2;whiteSpace=wrap;html=1;container=0;image;imageAspect=0;fillColor=#08427B;fontColor=#ffffff;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="900" y="20" width="200" height="180" as="geometry"/>
+        </mxCell>
+
+        <!-- LAYER 2: System Boundary -->
+        <mxCell id="boundary_1" value="E-Commerce System [Software System]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#444444;strokeWidth=2;dashed=1;fontSize=16;fontStyle=1;verticalAlign=top;align=left;spacingLeft=10;spacingTop=10;fontColor=#444444;" vertex="1" parent="1">
+          <mxGeometry x="40" y="260" width="1220" height="380" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="container_web" value="&lt;b&gt;Web Application&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Container: React]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Customer-facing storefront.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;container=0;fillColor=#438DD5;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="310" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="container_api" value="&lt;b&gt;API Gateway&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Container: Node.js]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Routes requests to services.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;container=0;fillColor=#438DD5;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="310" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="container_order" value="&lt;b&gt;Order Service&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Container: Python]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Handles order lifecycle.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;container=0;fillColor=#438DD5;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="490" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="container_payment" value="&lt;b&gt;Payment Service&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Container: Python]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Processes payments.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;container=0;fillColor=#438DD5;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="530" y="490" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="db_1" value="&lt;b&gt;Database&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Container: PostgreSQL]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Stores orders, products, users.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="980" y="310" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="db_cache" value="&lt;b&gt;Cache&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[Container: Redis]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Session and product cache.&lt;/font&gt;" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#438DD5;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="980" y="490" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- LAYER 3: External Systems -->
+        <mxCell id="ext_stripe" value="&lt;b&gt;Stripe&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[External System]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Payment processing.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;container=0;fillColor=#999999;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="280" y="720" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ext_email" value="&lt;b&gt;SendGrid&lt;/b&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;[External System]&lt;/font&gt;&lt;br/&gt;&lt;br/&gt;&lt;font style=&quot;font-size:11px&quot;&gt;Sends transactional emails.&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;container=0;fillColor=#999999;fontColor=#ffffff;strokeColor=none;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="780" y="720" width="240" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- CONNECTIONS -->
+        <mxCell id="conn_1" value="Browses and orders [HTTPS]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="person_1" target="container_web" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_2" value="Manages [HTTPS]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="person_2" target="container_api" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_3" value="Makes API calls [REST/JSON]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_web" target="container_api" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_4" value="Routes requests [REST/JSON]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_api" target="container_order" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_5" value="Routes requests [REST/JSON]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_api" target="container_payment" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_6" value="Reads/writes [SQL/TCP]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_order" target="db_1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_7" value="Reads/writes [SQL/TCP]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_payment" target="db_1" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_8" value="Caches data [Redis protocol]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_api" target="db_cache" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_9" value="Processes payments [REST/JSON]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;elbow=vertical;" edge="1" source="container_payment" target="ext_stripe" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="conn_10" value="Sends emails [REST/JSON]" style="endArrow=blockThin;endFill=1;fontSize=11;fontColor=#404040;strokeColor=#404040;dashed=1;dashPattern=5 5;elbow=vertical;" edge="1" source="container_order" target="ext_email" parent="1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <!-- LEGEND -->
+        <mxCell id="legend_bg" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#CCCCCC;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="720" width="280" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_title" value="&lt;b&gt;Legend&lt;/b&gt;" style="text;html=1;fontSize=13;fontColor=#333333;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="725" width="100" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_p" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#08427B;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="752" width="16" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_p_l" value="Person" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1334" y="750" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_c" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#438DD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="776" width="16" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_c_l" value="Container" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1334" y="774" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_d" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;size=4;fillColor=#438DD5;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="800" width="16" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_d_l" value="Database" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1334" y="798" width="80" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_e" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#999999;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1310" y="824" width="16" height="16" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_e_l" value="External System" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1334" y="822" width="120" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_sync" value="" style="endArrow=blockThin;endFill=1;strokeColor=#404040;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1470" y="760" as="sourcePoint"/>
+            <mxPoint x="1520" y="760" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend_sync_l" value="Synchronous" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1524" y="750" width="90" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend_async" value="" style="endArrow=blockThin;endFill=1;strokeColor=#404040;dashed=1;dashPattern=5 5;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1470" y="790" as="sourcePoint"/>
+            <mxPoint x="1520" y="790" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend_async_l" value="Asynchronous" style="text;html=1;fontSize=11;fontColor=#333333;align=left;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry x="1524" y="780" width="90" height="20" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
