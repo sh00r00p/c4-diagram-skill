@@ -35,37 +35,67 @@ Claude generates a `.drawio` file you can open and edit in [draw.io](https://app
 
 ## Installation
 
-Copy the skill into your project:
+### Option 1 — install as a plugin (recommended)
 
-```bash
-# Clone
-git clone https://github.com/nicholaev/c4-diagram-skill.git
+Type these inside Claude Code:
 
-# Copy into your project
-cp -r c4-diagram-skill /your-project/.claude/skills/c4-diagram
+```
+/plugin marketplace add aleksnikolaev/c4-diagram-skill
+/plugin install c4-diagram@c4-diagram-skill
 ```
 
-Or add directly to your project's `.claude/skills/` directory:
+The `owner/repo` shorthand clones over SSH. If you don't have SSH keys set up on GitHub, use the full HTTPS URL instead:
+
+```
+/plugin marketplace add https://github.com/aleksnikolaev/c4-diagram-skill.git
+```
+
+To pull updates later: `/plugin marketplace update c4-diagram-skill`
+
+### Option 2 — copy the skill by hand
+
+The skill lives in `skills/c4-diagram/`. Copy **that directory**, not the repository root — `SKILL.md` has to sit directly inside the skill folder.
+
+Personal install, available in all your projects:
 
 ```bash
-cd your-project
+git clone https://github.com/aleksnikolaev/c4-diagram-skill.git
+mkdir -p ~/.claude/skills
+cp -r c4-diagram-skill/skills/c4-diagram ~/.claude/skills/c4-diagram
+```
+
+Single project only:
+
+```bash
+git clone https://github.com/aleksnikolaev/c4-diagram-skill.git
 mkdir -p .claude/skills
-git clone https://github.com/nicholaev/c4-diagram-skill.git .claude/skills/c4-diagram
+cp -r c4-diagram-skill/skills/c4-diagram .claude/skills/c4-diagram
 ```
 
-Then start Claude Code in your project. The `/c4-diagram` command will be available.
+Either way you should end up with `SKILL.md` at `~/.claude/skills/c4-diagram/SKILL.md` (or `.claude/skills/c4-diagram/SKILL.md`).
+
+### Using it
+
+Run `/c4-diagram` in Claude Code, or just describe your system — Claude loads the skill on its own when a diagram would help.
 
 ## File Structure
 
 ```
 c4-diagram-skill/
-├── SKILL.md                        # Main skill definition
-├── references/
-│   ├── element-templates.md        # XML templates for each C4 element
-│   ├── drawio-template.md          # Base .drawio file structure
-│   └── legend-template.md          # Legend XML template
+├── .claude-plugin/
+│   ├── marketplace.json            # Marketplace catalog entry
+│   └── plugin.json                 # Plugin manifest
+├── skills/
+│   └── c4-diagram/
+│       ├── SKILL.md                # Main skill definition
+│       └── references/
+│           ├── element-templates.md    # XML templates for each C4 element
+│           ├── drawio-template.md      # Base .drawio file structure
+│           └── legend-template.md      # Legend XML template
 ├── examples/
-│   └── ecommerce-example.drawio    # Example output
+│   ├── ecommerce-example.drawio    # Example output
+│   └── ae-pipeline-c4-en.png       # Rendered example
+├── LICENSE
 └── README.md
 ```
 

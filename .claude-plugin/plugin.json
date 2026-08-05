@@ -1,12 +1,12 @@
 {
   "name": "c4-diagram",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate C4 Container diagrams (Simon Brown standard) as editable .drawio XML files",
   "author": {
     "name": "Alex Nikolaev",
-    "url": "https://github.com/sh00r00p"
+    "url": "https://github.com/aleksnikolaev"
   },
-  "repository": "https://github.com/sh00r00p/c4-diagram-skill",
+  "repository": "https://github.com/aleksnikolaev/c4-diagram-skill",
   "license": "MIT",
   "keywords": [
     "c4-model",
